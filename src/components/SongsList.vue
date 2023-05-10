@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto pa-2" max-width="300">
+  <v-card class="mx-auto pa-2">
     <v-list>
       <v-list-subheader>Favorite Songs</v-list-subheader>
 

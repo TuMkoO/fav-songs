@@ -1,5 +1,6 @@
 <template>
   <main>
+    <SongsPlayer />
     <SongsList :songs="songs" />
   </main>
 </template>
@@ -9,6 +10,7 @@ import { useSongsStore } from "@/stores/SongsStore";
 import { onMounted, ref } from "vue";
 import type { Song } from "./types";
 import SongsList from "./components/SongsList.vue";
+import SongsPlayer from "./components/SongsPlayer.vue";
 
 //store
 const songsStore = useSongsStore();
