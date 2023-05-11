@@ -1,6 +1,6 @@
 <template>
   <main>
-    <SongsPlayer />
+    <SongsPlayer :songs="playingSongs" @add-to-favotite="addToFavorite" />
     <SongsList :songs="songs" />
   </main>
 </template>
@@ -17,6 +17,27 @@ const songsStore = useSongsStore();
 
 const songs = ref<Song[]>([]);
 
+const playingSongs: Song[] = [
+  {
+    id: "1",
+    artist: "Ashley Wallbridge",
+    title: "Harmonies",
+    year: 2010,
+  },
+  {
+    id: "2",
+    artist: "Ashley Wallbridge",
+    title: "Smoke",
+    year: 2010,
+  },
+  {
+    id: "3",
+    artist: "Ashley Wallbridge",
+    title: "Vision",
+    year: 2011,
+  },
+];
+
 onMounted(() => {
   const tempSongs: Song[] = [];
 
@@ -31,6 +52,10 @@ onMounted(() => {
 
   songs.value = tempSongs;
 });
+
+const addToFavorite = (songId: string) => {
+  console.log(songId);
+};
 </script>
 
 <style scoped></style>
