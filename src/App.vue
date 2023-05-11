@@ -2,6 +2,14 @@
   <main>
     <SongsPlayer :songs="playingSongs" @add-to-favotite="addToFavorite" />
     <SongsList :songs="songs" :is-loading="isLoading" />
+    <v-snackbar
+      :timeout="2000"
+      color="primary"
+      variant="tonal"
+      v-model="addedNotificationShow"
+    >
+      Song add to favorites
+    </v-snackbar>
   </main>
 </template>
 
@@ -17,6 +25,7 @@ const songsStore = useSongsStore();
 
 const songs = ref<Song[]>(songsStore.songs);
 const isLoading = ref(false);
+const addedNotificationShow = ref(false);
 
 const playingSongs: Song[] = [
   {
@@ -46,6 +55,8 @@ const addToFavorite = (songId: string) => {
   //add song
   if (song) {
     songsStore.addSong(song);
+
+    addedNotificationShow.value = true;
   }
 };
 </script>
