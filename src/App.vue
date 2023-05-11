@@ -15,46 +15,51 @@ import SongsPlayer from "./components/SongsPlayer.vue";
 //store
 const songsStore = useSongsStore();
 
-const songs = ref<Song[]>([]);
+// const songs = ref<Song[]>([]);
+const songs = ref<Song[]>(songsStore.songs);
 
 const playingSongs: Song[] = [
   {
     id: "1",
-    artist: "Ashley Wallbridge",
-    title: "Harmonies",
+    artist: "Gareth Emery",
+    title: "Citadel",
     year: 2010,
   },
   {
     id: "2",
-    artist: "Ashley Wallbridge",
-    title: "Smoke",
+    artist: "Gareth Emery",
+    title: "Global",
     year: 2010,
   },
   {
     id: "3",
-    artist: "Ashley Wallbridge",
-    title: "Vision",
-    year: 2011,
+    artist: "Gareth Emery feat. Brute Force",
+    title: "Arrival",
+    year: 2010,
   },
 ];
 
 onMounted(() => {
-  const tempSongs: Song[] = [];
-
-  songsStore.songs.forEach((song) => {
-    tempSongs.push({
-      id: song.id,
-      title: song.title,
-      artist: song.artist,
-      year: song.year,
-    } as Song);
-  });
-
-  songs.value = tempSongs;
+  // const tempSongs: Song[] = [];
+  // songsStore.songs.forEach((song) => {
+  //   tempSongs.push({
+  //     id: song.id,
+  //     title: song.title,
+  //     artist: song.artist,
+  //     year: song.year,
+  //   } as Song);
+  // });
+  // songs.value = tempSongs;
 });
 
 const addToFavorite = (songId: string) => {
-  console.log(songId);
+  //find song
+  const song = playingSongs.find((song) => song.id === songId);
+
+  //add song
+  if (song) {
+    songsStore.addSong(song);
+  }
 };
 </script>
 

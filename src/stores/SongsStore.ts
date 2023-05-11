@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import type { Song } from "@/types";
 
 export const useSongsStore = defineStore("songs", {
   state: () => ({
@@ -24,5 +25,14 @@ export const useSongsStore = defineStore("songs", {
     ],
   }),
   getters: {},
-  actions: {},
+  actions: {
+    addSong(song: Song): void {
+      this.songs.push({
+        id: song.id,
+        artist: song.artist,
+        title: song.title,
+        year: song.year,
+      } as Song);
+    },
+  },
 });
