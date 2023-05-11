@@ -1,7 +1,7 @@
 <template>
   <main>
     <SongsPlayer :songs="playingSongs" @add-to-favotite="addToFavorite" />
-    <SongsList :songs="songs" />
+    <SongsList :songs="songs" :is-loading="isLoading" />
   </main>
 </template>
 
@@ -15,8 +15,8 @@ import SongsPlayer from "./components/SongsPlayer.vue";
 //store
 const songsStore = useSongsStore();
 
-// const songs = ref<Song[]>([]);
 const songs = ref<Song[]>(songsStore.songs);
+const isLoading = ref(false);
 
 const playingSongs: Song[] = [
   {
@@ -38,19 +38,6 @@ const playingSongs: Song[] = [
     year: 2010,
   },
 ];
-
-onMounted(() => {
-  // const tempSongs: Song[] = [];
-  // songsStore.songs.forEach((song) => {
-  //   tempSongs.push({
-  //     id: song.id,
-  //     title: song.title,
-  //     artist: song.artist,
-  //     year: song.year,
-  //   } as Song);
-  // });
-  // songs.value = tempSongs;
-});
 
 const addToFavorite = (songId: string) => {
   //find song
