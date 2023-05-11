@@ -20,19 +20,19 @@ const songs = ref<Song[]>(songsStore.songs);
 
 const playingSongs: Song[] = [
   {
-    id: "1",
+    id: "4",
     artist: "Gareth Emery",
     title: "Citadel",
     year: 2010,
   },
   {
-    id: "2",
+    id: "5",
     artist: "Gareth Emery",
     title: "Global",
     year: 2010,
   },
   {
-    id: "3",
+    id: "6",
     artist: "Gareth Emery feat. Brute Force",
     title: "Arrival",
     year: 2010,

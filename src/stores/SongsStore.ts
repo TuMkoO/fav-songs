@@ -34,5 +34,13 @@ export const useSongsStore = defineStore("songs", {
         year: song.year,
       } as Song);
     },
+
+    deleteSong(songId: string): void {
+      //find song
+      const id = this.songs.findIndex((song) => song.id == songId);
+
+      //delete song from store
+      this.songs.splice(id, 1);
+    },
   },
 });
